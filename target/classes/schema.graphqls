@@ -1,13 +1,13 @@
 type Logement {
-  reference:Int
-  adresse:String
-  gouvernorat:String
-  description:String
-  prix:Float
-  type:Type
+    reference: Int
+    adresse:String
+    delegation:String
+    gouvernorat:String
+    type :Type
+    description :String
+    prix :Float
 }
-
-enum Type {
+enum  Type {
     Studio
     Appartement
     Villa
@@ -15,27 +15,21 @@ enum Type {
 }
 
 type RendezVous {
-	id:Int
-	date:String
-	heure:String
-	logement:Logement
-	numTel:String
+    id :Int
+    date:String
+    heure :String
+    logement: Logement
+    numTel :String
 }
 
 type Query {
-allLogements:[Logement]
-getRdvsByLog(ref:Int):[RendezVous]
-allRendezVous:[RendezVous]
-getLogementByRef(reference:Int):Logement
-}
-type Mutation {
-createLogement(reference:Int, adresse:String):Logement
-updateRendezVous(id:Int, date:String, heure:String, numTel:String):Boolean
-createRendezVous(id:Int, date: String!, heure: String!, refLog: Int!, num: String):RendezVous
-deleteRendezVous(id:Int):Boolean
+    allRendezVousList:[RendezVous]
 }
 
-schema {
- query:Query
- mutation:Mutation
+type Mutation {
+    createRendezVous(id:Int,date:String,heure:String,refLog :Int, num:String):RendezVous
+}
+schema  {
+    query :Query
+    mutation: Mutation
 }
