@@ -1,0 +1,21 @@
+type Student {
+	cin :String
+	nompre :String
+	email :String 
+
+}
+type Query {
+	allStudents:[Student]
+	StudentbyCin(cin:String):Student
+
+}
+
+
+type Mutations {
+addStudent(cin :String ,nompre :String ,email :String):Student
+}
+
+schema {
+	query :Query
+	mutation :Mutations
+}
