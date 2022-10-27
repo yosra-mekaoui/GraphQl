@@ -1,21 +1,41 @@
-type Student {
-	cin :String
-	nompre :String
-	email :String 
-
+type Logement {
+  reference:Int
+  adresse:String
+  gouvernorat:String
+  description:String
+  prix:Float
+  type:Type
 }
+
+enum Type {
+    Studio
+    Appartement
+    Villa
+    EtageVilla
+}
+
+type RendezVous {
+	id:Int
+	date:String
+	heure:String
+	logement:Logement
+	numTel:String
+}
+
 type Query {
-	allStudents:[Student]
-	StudentbyCin(cin:String):Student
-
+allLogements:[Logement]
+getRdvsByLog(ref:Int):[RendezVous]
+allRendezVous:[RendezVous]
+getLogementByRef(reference:Int):Logement
 }
-
-
-type Mutations {
-addStudent(cin :String ,nompre :String ,email :String):Student
+type Mutation {
+createLogement(reference:Int, adresse:String):Logement
+updateRendezVous(id:Int, date:String, heure:String, numTel:String):Boolean
+createRendezVous(id:Int, date: String!, heure: String!, refLog: Int!, num: String):RendezVous
+deleteRendezVous(id:Int):Boolean
 }
 
 schema {
-	query :Query
-	mutation :Mutations
+ query:Query
+ mutation:Mutation
 }
