@@ -51,6 +51,13 @@ public class RendezVousRepository {
         }
         return false;
     }
+    public RendezVous getRendezVousbyId(int id) {
+		for (RendezVous r:listeRendezVous){
+			if(r.getId() == id)
+				return r;
+		}
+		return null;
+	}
     public Logement getLogementByRDV(int idRDV) {
         Logement logement = null;
         for(RendezVous r:listeRendezVous){

@@ -21,4 +21,23 @@ public Query(RendezVousRepository r, LogementRepository l) {
     public List<RendezVous> allRendezVousList(){
     return this.rendezVousRepository.getListeRendezVous();
     }
+    public List<RendezVous> getRdvsByLog(int reference) {
+        return rendezVousRepository.getListeRendezVousByLogementRef(reference);
+    }
+    public RendezVous RendezVousbyId(int id) {
+		return this.rendezVousRepository.getRendezVousbyId(id);
+	}
+    public List<Logement> allLogements() {
+        return logementRepository.getAllLogements();
+    }
+    
+    public Logement getLogementByRef(int reference) {
+        return logementRepository.getLogementsByReference(reference);
+     
+    }
+    public List<Logement> getLogementByType(Logement.Type type) {
+        return logementRepository.getLogementsByType(type);
+     
+    }
+   
 }

@@ -23,5 +23,18 @@ public class Mutation implements GraphQLRootResolver {
 
     }
 
-
+    public Boolean updateRendezVous(int id, String date, String heure, String numTel){
+    	Logement logement = rendezVousRepository.getLogementByRDV(id);
+    	RendezVous rdv = new RendezVous(id,date,heure,logement,numTel);
+    	System.out.println(rdv);
+    	return rendezVousRepository.updateRendezVous(rdv);
+    }
+    public Boolean deleteRendezVous(int id) {
+		return rendezVousRepository.deleteRendezVous(id);
+	}
+    public Logement createLogement(int reference, String adresse) {
+        Logement logement = new Logement(reference,adresse);
+        logementRepository.saveLogement(logement);
+        return logement;
+    }
 }

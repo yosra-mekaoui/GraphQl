@@ -5,6 +5,7 @@ import java.util.List;
 import entity.Logement;
 import entity.Logement.Type;
 
+
 public class LogementRepository {
 
     private final List<Logement> logements;

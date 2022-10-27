@@ -24,10 +24,19 @@ type RendezVous {
 
 type Query {
     allRendezVousList:[RendezVous]
+    getRdvsByLog(reference:Int):[RendezVous]
+    RendezVousbyId(id:Int):RendezVous
+    allLogements:[Logement]
+getLogementByRef(reference:Int):Logement
+getLogementByType(type:Type):[Logement]
 }
 
 type Mutation {
     createRendezVous(id:Int,date:String,heure:String,refLog :Int, num:String):RendezVous
+    updateRendezVous(id:Int, date:String, heure:String, numTel:String):Boolean
+        deleteRendezVous(id:Int):Boolean
+        createLogement(reference:Int, adresse:String):Logement
+    
 }
 schema  {
     query :Query
